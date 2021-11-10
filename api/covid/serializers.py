@@ -10,22 +10,22 @@ from .models import Peopleworkstatus
 class CovidstatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Covidstatus
-        fields = {'status_id', 'has_covid', 'prev_test', 'test_negative', 'test_inconcls'}
+        fields = ('status_id', 'has_covid', 'prev_test', 'test_negative', 'test_inconcls')
 
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = {'location_id', 'country', 'state_province', 'city'}
+        fields = ('location_id', 'country', 'state_province', 'city')
 
 class RiskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Risk
-        fields = {'risk_id', 'risk_level', 'im_comp'}
+        fields = ('risk_id', 'risk_level', 'im_comp')
 
 class PeopleSerializer(serializers.ModelSerializer):
     class Meta:
         model = People
-        fields = {'people_id', 'risk', 'status', 'first_name', 'last_name', 'age', 'gender', 'email'}
+        fields = ('people_id', 'risk', 'status', 'first_name', 'last_name', 'age', 'gender', 'email')
 
     def create(self, validated_data):
         risk, status, first_name, last_name, age, gender, email =\
@@ -56,12 +56,12 @@ class PeopleSerializer(serializers.ModelSerializer):
 class WorkstatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Workstatus
-        fields = {'work_id', 'location', 'work_type', 'high_inter', 'hrs_inter'}
+        fields = ('work_id', 'location', 'work_type', 'high_inter', 'hrs_inter')
 
 class PeopleworkstatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Peopleworkstatus
-        fields = {'people', 'work'}
+        fields = ('people', 'work')
 
     def create(self, validated_data):
         people, work =\
@@ -80,6 +80,6 @@ class PeopleworkstatusSerializer(serializers.ModelSerializer):
 
         if new_work:
             instance.work = new_work
-            
+
         instance.save()
         return instance

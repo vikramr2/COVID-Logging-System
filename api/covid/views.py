@@ -34,7 +34,7 @@ class PeopleView(APIView, UpdateModelMixin, DestroyModelMixin):
     def get(self, request, id=None):
         if id:
             try:
-                queryset = People.objects.get(id=id)
+                queryset = People.objects.get(people_id=id)
             except People.DoesNotExist:
                 return Response({'errors': 'This person item does not exist.'}, status=400)
 
@@ -74,7 +74,7 @@ class PeopleView(APIView, UpdateModelMixin, DestroyModelMixin):
 
     def delete(self, request, id=None):
         try:
-            person_item = Todo.objects.get(id=id)
+            person_item = People.objects.get(id=id)
         except People.DoesNotExist:
             return Response({'errors': 'This person item does not exist.'}, status=400)
 

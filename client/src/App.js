@@ -6,11 +6,19 @@ import Entry from './Entry';
 import SelectorAdvanced from './SelectorAdvanced';
 import SelectorBasic from './SelectorBasic';
 
+/** Filter names of people based on the search query
+ * 
+ * @param {Array} people Basic data fetched from API
+ * @param {String} query String entered in Search Query
+ * @returns Filtered list
+ */
 function filterPeople(people, query) {
+  // If the query is empty, just return the full list
   if (!query) {
     return people;
   }
 
+  // Otherwise filter by inclusion in first or last name
   return people.filter((person) => {
     const fname = person.first_name.toLowerCase();
     const lname = person.last_name.toLowerCase();
@@ -18,12 +26,24 @@ function filterPeople(people, query) {
   })
 }
 
+/** Filter attributes of people based on form
+ * 
+ * @param {Array} people Detailed data fetched from API
+ * @param {String} query String entered in Search Query
+ * @param {Boolean} hasCovid Should we only return people who have COVID?
+ * @param {Boolean} advanced Is advanced selection open?
+ * @returns Filtered list
+ */
 function filterAdvanced(people, query, hasCovid, advanced) {
+  // If we are only on basic selection, return the entire list
   if (!advanced) {
     return people;
   }
 
+  // Set aside a copy since we are doing multiple rounds of filtration
   let copy = [...people];
+
+  // Filter first by query on the location
   if (query) {
     copy = copy.filter((person) => {
       const city = person.city.toLowerCase();
@@ -36,16 +56,23 @@ function filterAdvanced(people, query, hasCovid, advanced) {
     })
   }
 
+  // Then filter out those who dont have COVID if it is actually specified
   if (hasCovid) {
     copy = copy.filter((person) => {
       return person.has_covid;
     })
   }
 
+  // Return filted list
   return copy;
 }
 
+/** Main render
+ * 
+ * @returns HTML of main render
+ */
 function App() {
+  // Set initial states
   const [people, setPeople] = useState([]);
   const [detail, setDetail] = useState([]);
   const [showDetail, setShowDetail] = useState(false);
@@ -53,6 +80,7 @@ function App() {
   const [locQuery, setLocQuery] = useState("");
   const [hasCovid, setHasCovid] = useState(false);
 
+  // Use effect to fill array by pinging the API
   useEffect(() => {
     async function updatePeople() {
       let newPeople = await getPeople();
@@ -69,8 +97,7 @@ function App() {
     updatePeopleDetails();
   }, []);
 
-  console.log(hasCovid);
-
+  // Filter appropriate data
   let selectedList = filterAdvanced(filterPeople((showDetail ? detail : people).slice(0, 100), searchQuery), locQuery, hasCovid, showDetail);
 
   return (

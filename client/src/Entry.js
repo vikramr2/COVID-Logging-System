@@ -1,10 +1,18 @@
 import React from 'react';
 
+/** React Component for Single Entry Card for a Person in the database
+ * 
+ * @param {Object} listItem Object storing a person's information
+ * @param {Boolean} detailed Display details? 
+ * @returns 
+ */
 function Entry({ listItem, detailed }) {
+    // If the data hasn't loaded yet, then dont output anything
     if (!listItem) {
         return (<div></div>);
     }
 
+    // If not detailed. only render name, age, gender, and email
     if (!detailed) {
         return (
             <div class="entry-card">
@@ -25,6 +33,7 @@ function Entry({ listItem, detailed }) {
         );
     }
 
+    // Otherwise, render COVID status and location as well
     return (
         <div class="entry-card">
             <h3>{listItem.first_name} &nbsp; {listItem.last_name}</h3>
@@ -52,4 +61,5 @@ function Entry({ listItem, detailed }) {
     );
 }
 
+// Export the component so that it can be used by the main app
 export default Entry;

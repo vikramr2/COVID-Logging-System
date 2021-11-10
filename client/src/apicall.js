@@ -1,8 +1,13 @@
 const axios = require('axios').default;
 
+// URLs to ping
 const PEOPLE_URL = 'http://localhost:8000/people/';
 const DETAIL_URL = 'http://localhost:8000/people/detailed/';
 
+/** Ping people URL and grab data
+ * 
+ * @returns Array of people objects
+ */
 export async function getPeople() {
     var people = [];
 
@@ -15,6 +20,10 @@ export async function getPeople() {
     return people;
 }
 
+/** Ping detail URL and grab data
+ * 
+ * @returns Array of detailed people objects
+ */
 export async function getPeopleDetails() {
     var details = [];
 

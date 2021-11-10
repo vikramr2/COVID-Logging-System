@@ -10,6 +10,7 @@ from .models import Risk
 from .models import People
 from .models import Workstatus
 from .models import Peopleworkstatus
+from .models import Peopledetail
 
 from .serializers import CovidstatusSerializer
 from .serializers import LocationSerializer
@@ -17,12 +18,13 @@ from .serializers import RiskSerializer
 from .serializers import PeopleSerializer
 from .serializers import WorkstatusSerializer
 from .serializers import PeopleworkstatusSerializer
+from .serializers import PeopledetailSerializer
 
 """
 
 FIELDS NEEDED
 -------------
-People
+People [X]
 People in a location
 People who have Covid
 People in a location who have Covid
@@ -31,8 +33,11 @@ People in a location who have Covid
 
 # Create your views here.
 class PeopleView(APIView, UpdateModelMixin, DestroyModelMixin):
-    def get(self, request, id=None):
-        if id:
+    def get(self, request, id=None, detailed='false'):
+        if detailed == 'true':
+            queryset = Peopledetail.objects.all()
+            read_serializer = PeopledetailSerializer(queryset, many=True)
+        elif id:
             try:
                 queryset = People.objects.get(people_id=id)
             except People.DoesNotExist:

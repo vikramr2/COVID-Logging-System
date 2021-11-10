@@ -6,6 +6,7 @@ from .models import Risk
 from .models import People
 from .models import Workstatus
 from .models import Peopleworkstatus
+from .models import Peopledetail
 
 class CovidstatusSerializer(serializers.ModelSerializer):
     class Meta:
@@ -83,3 +84,8 @@ class PeopleworkstatusSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
+
+class PeopledetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Peopledetail
+        fields = ('people_id', 'first_name', 'last_name', 'has_covid', 'age', 'gender', 'email', 'country', 'state_province', 'city')

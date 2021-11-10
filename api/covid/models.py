@@ -56,6 +56,23 @@ class People(models.Model):
         db_table = 'People'
 
 
+class Peopledetail(models.Model):
+    people_id = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=31, blank=True, null=True)
+    last_name = models.CharField(max_length=31, blank=True, null=True)
+    has_covid = models.IntegerField(blank=True, null=True)
+    age = models.IntegerField()
+    gender = models.CharField(max_length=255, blank=True, null=True)
+    email = models.CharField(max_length=255, blank=True, null=True)
+    country = models.CharField(max_length=255, blank=True, null=True)
+    state_province = models.CharField(max_length=255, blank=True, null=True)
+    city = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'PeopleDetail'
+
+
 class Workstatus(models.Model):
     work_id = models.AutoField(primary_key=True)
     location = models.ForeignKey(Location, models.DO_NOTHING)

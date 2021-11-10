@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1^zq)_t$sj!2z_4d)xb9@^m(=72pre&bcktf+5wfe4j9^s$gia
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'covid.apps.CovidConfig',
     'rest_framework'
 ]
 
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'proj',
+        'USER': 'root',
+        'PASSWORD': 'Frui#ake!',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 

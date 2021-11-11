@@ -43,3 +43,18 @@ h2, p {
   display: flex;
   justify-content: center;
 }
+
+input[type=radio] {
+  display: inline-block;
+}
+
+.rlabel {
+  display: inline-block;
+  text-align: left;
+}
+
+.input-container {
+  display: block;
+  padding: auto;
+  margin: auto;
+}

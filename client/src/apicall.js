@@ -1,8 +1,12 @@
 const axios = require('axios').default;
 
 // URLs to ping
-const PEOPLE_URL = 'http://localhost:8000/people/';
-const DETAIL_URL = 'http://localhost:8000/people/detailed/';
+const PEOPLE_URL   = 'http://localhost:8000/people/';
+const DETAIL_URL   = 'http://localhost:8000/people/detailed/';
+const COUNTRY_URL  = 'http://localhost:8000/cases/country/';
+const PROVINCE_URL = 'http://localhost:8000/cases/province/';
+const CITY_URL     = 'http://localhost:8000/cases/city/';
+
 
 /** Ping people URL and grab data
  * 
@@ -56,10 +60,46 @@ export async function getPeopleDetails() {
     var details = [];
 
     await axios.get(DETAIL_URL, {}).then(res => {
-        details = res.data
+        details = res.data;
     }).catch(error => {
         console.log(error);
     })
 
     return details;
+}
+
+export async function getCountryData() {
+    var cases = [];
+
+    await axios.get(COUNTRY_URL, {}).then(res => {
+        cases = res.data;
+    }).catch(error => {
+        console.log(error);
+    })
+
+    return cases
+}
+
+export async function getProvinceData() {
+    var cases = [];
+
+    await axios.get(PROVINCE_URL, {}).then(res => {
+        cases = res.data;
+    }).catch(error => {
+        console.log(error);
+    })
+
+    return cases
+}
+
+export async function getCityData() {
+    var cases = [];
+
+    await axios.get(CITY_URL, {}).then(res => {
+        cases = res.data;
+    }).catch(error => {
+        console.log(error);
+    })
+
+    return cases
 }

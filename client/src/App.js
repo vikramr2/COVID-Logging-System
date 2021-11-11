@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import { getPeople, getPeopleDetails } from './apicall';
+import { getCityData, getCountryData, getPeople, getPeopleDetails, getProvinceData } from './apicall';
 
 import './App.css';
+import CaseEntry from './CaseEntry';
+import ContextSelect from './ContextSelect';
 import CreateWindow from './CreateWindow';
 import Entry from './Entry';
 import SelectorAdvanced from './SelectorAdvanced';
@@ -69,6 +71,22 @@ function filterAdvanced(people, query, hasCovid, advanced) {
   return copy;
 }
 
+function filterCases(casesList, query, context) {
+  if (!query) {
+    return casesList;
+  }
+
+  return casesList.filter((entry) => {
+    let selectedAttribute = 
+      (context == "country" ? entry.country : (context == "province" ? entry.province : entry.city))
+      .toLowerCase();
+
+    console.log(selectedAttribute);
+    
+    return selectedAttribute.includes(query.toLowerCase());
+  })
+}
+
 /** Main render
  * 
  * @returns HTML of main render
@@ -85,6 +103,11 @@ function App() {
   const [id, setId] = useState(0);
   const [fname, setFname] = useState("John");
   const [lname, setLname] = useState("Doe");
+  const [context, setContext] = useState("country");
+  const [query, setQuery] = useState("");
+  const [country, setCountry] = useState([]);
+  const [province, setProvince] = useState([]);
+  const [city, setCity] = useState([]);
 
   // Use effect to fill array by pinging the API
   useEffect(() => {
@@ -103,10 +126,33 @@ function App() {
     updatePeopleDetails();
   }, []);
 
+  useEffect(() => {
+    async function updateCountry() {
+      let newCases = await getCountryData();
+      setCountry(newCases);
+    }
+    updateCountry();
+  }, []);
+
+  useEffect(() => {
+    async function updateProvince() {
+      let newCases = await getProvinceData();
+      setProvince(newCases);
+    }
+    updateProvince();
+  }, []);
+
+  useEffect(() => {
+    async function updateCity() {
+      let newCases = await getCityData();
+      setCity(newCases);
+    }
+    updateCity();
+  }, []);
+
   // Filter appropriate data
   let selectedList = filterAdvanced(filterPeople((showDetail ? detail : people), searchQuery), locQuery, hasCovid, showDetail).slice(0, 100);
-
-  console.log(detail[detail.length - 1]);
+  let casesList = filterCases(context == "country" ? country : (context == "city" ? city : province), query, context);
 
   return (
     <Router>
@@ -170,7 +216,18 @@ function App() {
             ))}
           </Route>
           <Route path="/world">
-              <p>Hello World</p>
+            <h2>Cases Logged in File</h2>
+            <ContextSelect
+              setContext={setContext}
+              query={query}
+              setQuery={setQuery}
+            />
+            {casesList.map((entry) => (
+              <CaseEntry
+                listEntry={entry}
+                context={context}
+              />
+            ))}
           </Route>
         </Switch>
       </div>

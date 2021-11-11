@@ -13,6 +13,7 @@ DROP  TABLE IF EXISTS `Location`	;
 DROP  TABLE IF EXISTS `People`	    ;
 DROP  TABLE IF EXISTS `WorkStatus`  ;
 DROP  TABLE IF EXISTS `Risk`		;
+DROP  TABLE IF EXISTS `PeopleDetail`;
 SET FOREIGN_KEY_CHECKS = TRUE;
 FLUSH TABLES 		  `CovidStatus`, `Location`, `People`, `WorkStatus`, `Risk`;
 
@@ -76,11 +77,25 @@ CREATE TABLE WorkStatus (
 );
 
 CREATE TABLE Location (
-	location_id INT NOT NULL AUTO_INCREMENT						,
+	location_id INT NOT NULL AUTO_INCREMENT	                    ,
 	country VARCHAR (255)										,
 	state_province VARCHAR(255)									,
 	city VARCHAR(255)											,
 	PRIMARY KEY (location_ID)
+);
+
+CREATE TABLE PeopleDetail (
+	people_id INT NOT NULL AUTO_INCREMENT   					,
+    first_name VARCHAR (31)										,
+	last_name VARCHAR (31)										,
+    has_covid BOOLEAN											,
+	age INT NOT NULL											,
+	gender VARCHAR (255)                    					,
+	email VARCHAR (255)											,
+    country VARCHAR (255)										,
+	state_province VARCHAR(255)									,
+	city VARCHAR(255)											,
+    PRIMARY KEY (people_id)
 );
 
 -- The code segment below creates the relevant foreign keys for the tables created
@@ -108,6 +123,51 @@ SELECT * FROM Risk;
 SELECT * FROM WorkStatus;
 SELECT * FROM People;
 SELECT * FROM PeopleWorkStatus;
+
+-- For API Purposes
+INSERT INTO PeopleDetail
+SELECT 
+	pid,
+    first_name,
+    last_name,
+    MAX(has_covid),
+    age,
+    gender,
+    email,
+    MAX(country),
+    MAX(state_province),
+    MAX(city)
+FROM (
+	SELECT DISTINCT 
+		pid,
+		first_name,
+		last_name,
+        has_covid,
+		age,
+		gender,
+		email,
+		country, 
+		state_province, 
+		city
+	FROM (
+		(SELECT 
+			People.people_id pid,
+			first_name,
+			last_name,
+            People.status_id sid,
+			age,
+			gender,
+			email
+		FROM People
+		GROUP BY People.people_id) t
+			JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
+			JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
+			JOIN Location ON WorkStatus.location_id = Location.location_id
+            JOIN CovidStatus ON sid = CovidStatus.status_id
+)) T
+GROUP BY pid;
+
+SELECT * FROM PeopleDetail; 
 
 -- The two commands below represent the advanced SQL queris related to the project.
 
@@ -143,8 +203,6 @@ EXPLAIN ANALYZE SELECT country, AVG(WorkStatus.hrs_inter) from Location
 INNER JOIN WorkStatus
 ON Location.location_id = WorkStatus.location_id
 GROUP BY Location.country;
-
-
 
 
 

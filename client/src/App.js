@@ -103,9 +103,9 @@ function App() {
   }, []);
 
   // Filter appropriate data
-  let selectedList = filterAdvanced(filterPeople((showDetail ? detail : people).slice(0, 100), searchQuery), locQuery, hasCovid, showDetail);
+  let selectedList = filterAdvanced(filterPeople((showDetail ? detail : people), searchQuery), locQuery, hasCovid, showDetail).slice(0, 100);
 
-  console.log(selectedList);
+  console.log(detail[detail.length - 1]);
 
   return (
     <div>

@@ -33,7 +33,7 @@ export async function modifyPerson(id, age) {
 }
 
 export async function addPerson(people_id, fname, lname) {
-    await axios.post(PEOPLE_URL, {
+    await axios.post(PEOPLE_URL + people_id + '/', {
         people_id: people_id,
         first_name: fname,
         last_name: lname,
@@ -45,7 +45,7 @@ export async function addPerson(people_id, fname, lname) {
         state_province: "Illinois",
         city: "Champaign"
     }).then(res => {console.log("Success!")})
-    .catch(error => console.log(PEOPLE_URL))
+    .catch(error => console.log(PEOPLE_URL + people_id + '/'))
 }
 
 /** Ping detail URL and grab data

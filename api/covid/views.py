@@ -33,10 +33,13 @@ People in a location who have Covid
 
 # Create your views here.
 class PeopleView(APIView, UpdateModelMixin, DestroyModelMixin):
-    def get(self, request, id=None, detailed='false'):
-        if detailed == 'true':
+    def get(self, request, id=None, detailed="false"):
+        # if detailed endpoint specified
+        if detailed == "detailed":
             queryset = Peopledetail.objects.all()
             read_serializer = PeopledetailSerializer(queryset, many=True)
+
+        # grab only one id
         elif id:
             try:
                 queryset = People.objects.get(people_id=id)
@@ -44,18 +47,20 @@ class PeopleView(APIView, UpdateModelMixin, DestroyModelMixin):
                 return Response({'errors': 'This person item does not exist.'}, status=400)
 
             read_serializer = PeopleSerializer(queryset)
+
+        # otherwise get all people objects
         else:
             queryset = People.objects.all()
             read_serializer = PeopleSerializer(queryset, many=True)
 
         return Response(read_serializer.data)
 
-    def post(self, request):
-        create_serializer = PeopleSerializer(data=request.data)
+    def post(self, request, id=None):
+        create_serializer = PeopledetailSerializer(data=request.data)
 
         if create_serializer.is_valid():
             person_item_object = create_serializer.save()
-            read_serializer = PeopleSerializer(person_item_object)
+            read_serializer = PeopledetailSerializer(person_item_object)
         
             return Response(read_serializer.data, status=201)
 
@@ -63,15 +68,15 @@ class PeopleView(APIView, UpdateModelMixin, DestroyModelMixin):
     
     def put(self, request, id=None):
         try:
-            person_item = People.objects.get(id=id)
-        except People.DoesNotExist:
+            person_item = Peopledetail.objects.get(people_id=id)
+        except Peopledetail.DoesNotExist:
             return Response({'errors': 'This person item does not exist.'}, status=400)
         
-        update_serializer = PeopleSerializer(person_item, data=request.data)
+        update_serializer = PeopledetailSerializer(person_item, data=request.data)
 
         if update_serializer.is_valid():
             person_item_object = update_serializer.save()
-            read_serializer = PeopleSerializer(person_item_object)
+            read_serializer = PeopledetailSerializer(person_item_object)
 
             return Response(read_serializer.data, status=200)
         
@@ -79,8 +84,8 @@ class PeopleView(APIView, UpdateModelMixin, DestroyModelMixin):
 
     def delete(self, request, id=None):
         try:
-            person_item = People.objects.get(id=id)
-        except People.DoesNotExist:
+            person_item = Peopledetail.objects.get(people_id=id)
+        except Peopledetail.DoesNotExist:
             return Response({'errors': 'This person item does not exist.'}, status=400)
 
         person_item.delete()

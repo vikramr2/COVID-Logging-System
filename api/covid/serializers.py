@@ -8,6 +8,10 @@ from .models import Workstatus
 from .models import Peopleworkstatus
 from .models import Peopledetail
 
+"""
+Serializers make sure that grabbed data matches the schema
+"""
+
 class CovidstatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Covidstatus
@@ -89,3 +93,19 @@ class PeopledetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Peopledetail
         fields = ('people_id', 'first_name', 'last_name', 'has_covid', 'age', 'gender', 'email', 'country', 'state_province', 'city')
+
+    def create(self, validated_data):
+        return Peopledetail.objects.create(
+            first_name = validated_data['first_name'],
+            last_name = validated_data['last_name'],
+            has_covid = validated_data['has_covid'],
+            age = validated_data['age'],
+            gender = validated_data['gender'],
+            email = validated_data['email'],
+            country = validated_data['country'],
+            state_province = validated_data['state_province'],
+            city = validated_data['city']
+        )
+    
+    def update(self, instance, validated_data):
+        return super().update(instance, validated_data)

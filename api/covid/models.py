@@ -7,6 +7,15 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+"""
+Model objects essentially just grab the schema of each table.
+
+Ex. CovidStatus Table. Fields include:
+- status_id
+- has_covid
+- test_negative
+- test_inconcls
+"""
 
 class Covidstatus(models.Model):
     status_id = models.AutoField(primary_key=True)
@@ -43,8 +52,8 @@ class Risk(models.Model):
 
 class People(models.Model):
     people_id = models.AutoField(primary_key=True)
-    risk = models.ForeignKey(Risk, models.DO_NOTHING)
-    status = models.ForeignKey(Covidstatus, models.DO_NOTHING)
+    risk = models.ForeignKey(Risk, on_delete=models.CASCADE)
+    status = models.ForeignKey(Covidstatus, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=31, blank=True, null=True)
     last_name = models.CharField(max_length=31, blank=True, null=True)
     age = models.IntegerField()

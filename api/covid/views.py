@@ -1,3 +1,4 @@
+from django.db.models import query
 from django.shortcuts import render
 
 from rest_framework.views import APIView
@@ -11,6 +12,9 @@ from .models import People
 from .models import Workstatus
 from .models import Peopleworkstatus
 from .models import Peopledetail
+from .models import Countrycount
+from .models import Provincecount
+from .models import Citycount
 
 from .serializers import CovidstatusSerializer
 from .serializers import LocationSerializer
@@ -19,6 +23,9 @@ from .serializers import PeopleSerializer
 from .serializers import WorkstatusSerializer
 from .serializers import PeopleworkstatusSerializer
 from .serializers import PeopledetailSerializer
+from .serializers import CountrycountSerializer
+from .serializers import ProvincecountSerializer
+from .serializers import CitycountSerializer
 
 """
 
@@ -91,3 +98,17 @@ class PeopleView(APIView, UpdateModelMixin, DestroyModelMixin):
         person_item.delete()
 
         return Response(status=204)
+
+class CasesView(APIView, UpdateModelMixin, DestroyModelMixin):
+    def get(self, request, context='country'):
+        if context == 'country':
+            queryset = Countrycount.objects.all()
+            read_serializer = CountrycountSerializer(queryset, many=True)
+        elif context == 'province':
+            queryset = Provincecount.objects.all()
+            read_serializer = ProvincecountSerializer(queryset, many=True)
+        else:
+            queryset = Citycount.objects.all()
+            read_serializer = CitycountSerializer(queryset, many=True)
+
+        return Response(read_serializer.data)

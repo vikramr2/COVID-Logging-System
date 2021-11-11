@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Covidstatus
+from .models import Citycount, Countrycount, Covidstatus, Provincecount
 from .models import Location
 from .models import Risk
 from .models import People
@@ -109,3 +109,18 @@ class PeopledetailSerializer(serializers.ModelSerializer):
     
     def update(self, instance, validated_data):
         return super().update(instance, validated_data)
+
+class CitycountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Citycount
+        fields = ('city', 'cases')
+
+class ProvincecountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Provincecount
+        fields = ('province', 'cases')
+
+class CountrycountSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Countrycount
+        fields = ('country', 'cases')

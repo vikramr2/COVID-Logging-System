@@ -112,6 +112,32 @@ class AuthGroup(models.Model):
         db_table = 'auth_group'
 
 
+class Citycount(models.Model):
+    city = models.CharField(max_length=255, blank=True, null=False, primary_key=True)
+    cases = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'CityCount'
+
+
+class Countrycount(models.Model):
+    country = models.CharField(max_length=255, blank=True, null=False, primary_key=True)
+    cases = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'CountryCount'
+
+class Provincecount(models.Model):
+    province = models.CharField(max_length=255, blank=True, null=False, primary_key=True)
+    cases = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'ProvinceCount'
+
+
 class AuthGroupPermissions(models.Model):
     id = models.BigAutoField(primary_key=True)
     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)

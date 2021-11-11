@@ -8,13 +8,19 @@ import React from 'react';
  * @param {Function} setSearchQuery function to set search query; triggered on enter in textbox
  * @returns HTML for render
  */
-function SelectorBasic({ showDetail, setShowDetail, searchQuery, setSearchQuery }) {
+function SelectorBasic({ showDetail, setShowDetail, searchQuery, setSearchQuery, window, setWindow }) {
     // Message to place on the button for opening up detailed menu
     var message = showDetail ? "Hide Detail" : "Show Detail";
+
+    var menu = window ? "Close" : "Add"
 
     // Method to open/close detailed menu on click
     const switchMode = e => {
         setShowDetail(!showDetail);
+    }
+
+    const openWindow = e => {
+        setWindow(!window);
     }
 
     // Render component
@@ -33,6 +39,9 @@ function SelectorBasic({ showDetail, setShowDetail, searchQuery, setSearchQuery 
             </div>
             <div class="basic-wrapper">
                 <input class="basic" type="button" onClick={switchMode} value={message}/>
+            </div>
+            <div class="basic-wrapper">
+                <input class="basic" type="button" onClick={openWindow} value={menu}/>
             </div>
         </div>
     )

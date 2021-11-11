@@ -20,6 +20,34 @@ export async function getPeople() {
     return people;
 }
 
+export async function deletePerson(id) {
+    await axios.delete(PEOPLE_URL + id + '/', {}).then(res => {
+        console.log('Success!');
+    }).catch(error => console.log(PEOPLE_URL + id + '/'))
+}
+
+export async function modifyPerson(id, age) {
+    await axios.put(PEOPLE_URL + id + '/', {age: age}).then(res => {
+        console.log('Success!');
+    }).catch(error => console.log(PEOPLE_URL + id + '/'))
+}
+
+export async function addPerson(people_id, fname, lname) {
+    await axios.post(PEOPLE_URL, {
+        people_id: people_id,
+        first_name: fname,
+        last_name: lname,
+        has_covid: 0,
+        age: 20,
+        gender: "Other",
+        email: "vikramr2@illinois.edu",
+        country: "USA",
+        state_province: "Illinois",
+        city: "Champaign"
+    }).then(res => {console.log("Success!")})
+    .catch(error => console.log(PEOPLE_URL))
+}
+
 /** Ping detail URL and grab data
  * 
  * @returns Array of detailed people objects

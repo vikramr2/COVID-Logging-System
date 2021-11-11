@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getPeople, getPeopleDetails } from './apicall';
 
 import './App.css';
+import CreateWindow from './CreateWindow';
 import Entry from './Entry';
 import SelectorAdvanced from './SelectorAdvanced';
 import SelectorBasic from './SelectorBasic';
@@ -75,10 +76,14 @@ function App() {
   // Set initial states
   const [people, setPeople] = useState([]);
   const [detail, setDetail] = useState([]);
-  const [showDetail, setShowDetail] = useState(false);
+  const [showDetail, setShowDetail] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [locQuery, setLocQuery] = useState("");
   const [hasCovid, setHasCovid] = useState(false);
+  const [window, setWindow] = useState(false);
+  const [id, setId] = useState(0);
+  const [fname, setFname] = useState("John");
+  const [lname, setLname] = useState("Doe");
 
   // Use effect to fill array by pinging the API
   useEffect(() => {
@@ -100,6 +105,8 @@ function App() {
   // Filter appropriate data
   let selectedList = filterAdvanced(filterPeople((showDetail ? detail : people).slice(0, 100), searchQuery), locQuery, hasCovid, showDetail);
 
+  console.log(selectedList);
+
   return (
     <div>
       <h2>COVID Exposure Tracker</h2>
@@ -108,6 +115,19 @@ function App() {
         setShowDetail={setShowDetail}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        window={window}
+        setWindow={setWindow}
+      />
+      <CreateWindow
+        window={window}
+        people={detail}
+        setPeople={setDetail}
+        id={id}
+        setId={setId}
+        fname={fname}
+        setFname={setFname}
+        lname={lname}
+        setLname={setLname}
       />
       <SelectorAdvanced
         showDetail={showDetail}
@@ -120,6 +140,10 @@ function App() {
         <Entry
           listItem={entry}
           detailed={showDetail}
+          people={people}
+          setPeople={setPeople}
+          details={detail}
+          setDetails={setDetail}
         />
       ))}
     </div>

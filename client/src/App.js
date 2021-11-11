@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import { getPeople, getPeopleDetails } from './apicall';
 
 import './App.css';
@@ -108,45 +109,72 @@ function App() {
   console.log(detail[detail.length - 1]);
 
   return (
-    <div>
-      <h2>COVID Exposure Tracker</h2>
-      <SelectorBasic
-        showDetail={showDetail}
-        setShowDetail={setShowDetail}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        window={window}
-        setWindow={setWindow}
-      />
-      <CreateWindow
-        window={window}
-        people={detail}
-        setPeople={setDetail}
-        id={id}
-        setId={setId}
-        fname={fname}
-        setFname={setFname}
-        lname={lname}
-        setLname={setLname}
-      />
-      <SelectorAdvanced
-        showDetail={showDetail}
-        locQuery={locQuery}
-        setLocQuery={setLocQuery}
-        hasCovid={hasCovid}
-        setHasCovid={setHasCovid}
-      />
-      {selectedList.map((entry) => (
-        <Entry
-          listItem={entry}
-          detailed={showDetail}
-          people={people}
-          setPeople={setPeople}
-          details={detail}
-          setDetails={setDetail}
-        />
-      ))}
-    </div>
+    <Router>
+      <div>
+        <nav class="not-sliding navbar navbar-expand-lg navbar-light bg-light">
+          <Link class="navbar-brand" to="/home"><p class="L"><b>COVID Logging System</b></p></Link>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <Link class="nav-link" to="/home"><p class="L">Home</p></Link>
+              </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/world"><p class="L">World</p></Link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <Switch>
+          <Route path="/home">
+            <h2>COVID Exposure Tracker</h2>
+            <div class="horizontals">
+              <SelectorBasic
+                showDetail={showDetail}
+                setShowDetail={setShowDetail}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                window={window}
+                setWindow={setWindow}
+              />
+              <SelectorAdvanced
+                showDetail={showDetail}
+                locQuery={locQuery}
+                setLocQuery={setLocQuery}
+                hasCovid={hasCovid}
+                setHasCovid={setHasCovid}
+              />
+              <CreateWindow
+                window={window}
+                people={detail}
+                setPeople={setDetail}
+                id={id}
+                setId={setId}
+                fname={fname}
+                setFname={setFname}
+                lname={lname}
+                setLname={setLname}
+              />
+            </div>
+            {selectedList.map((entry) => (
+              <Entry
+                listItem={entry}
+                detailed={showDetail}
+                people={people}
+                setPeople={setPeople}
+                details={detail}
+                setDetails={setDetail}
+              />
+            ))}
+          </Route>
+          <Route path="/world">
+              <p>Hello World</p>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

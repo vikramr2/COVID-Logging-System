@@ -47,18 +47,18 @@ function Entry({ listItem, detailed, people, setPeople, details, setDetails }) {
     if (!detailed) {
         return (
             <div class="entry-card">
-                <h3>{listItem.first_name} &nbsp; {listItem.last_name}</h3>
+                <h3 class="L">{listItem.first_name} &nbsp; {listItem.last_name}</h3>
                 <div class="row">
-                    <div class="col-8">Age</div>
-                    <div class="col-4">{listItem.age}</div>
+                    <div class="col-8"><p class="L">Age</p></div>
+                    <div class="col-4"><p class="L">{listItem.age}</p></div>
                 </div>
                 <div class="row">
-                    <div class="col-8">Gender</div>
-                    <div class="col-4">{listItem.gender}</div>
+                    <div class="col-8"><p class="L">Gender</p></div>
+                    <div class="col-4"><p class="L">{listItem.gender}</p></div>
                 </div>
                 <div class="row">
-                    <div class="col-8">Email</div>
-                    <div class="col-4">{listItem.email}</div>
+                    <div class="col-8"><p class="L">Email</p></div>
+                    <div class="col-4"><p class="L">{listItem.email}</p></div>
                 </div>
                 <div class="row">
                     <div class="col-sm">
@@ -75,26 +75,26 @@ function Entry({ listItem, detailed, people, setPeople, details, setDetails }) {
     // Otherwise, render COVID status and location as well
     return (
         <div class="entry-card">
-            <h3>{listItem.first_name} &nbsp; {listItem.last_name}</h3>
+            <h3 class="L">{listItem.first_name} &nbsp; {listItem.last_name}</h3>
             <div class="row">
-                <div class="col-8">Age</div>
-                <div class="col-4">{listItem.age}</div>
+                <div class="col-8"><p class="L">Age</p></div>
+                <div class="col-4"><p class="L">{listItem.age}</p></div>
             </div>
             <div class="row">
-                <div class="col-8">Gender</div>
-                <div class="col-4">{listItem.gender}</div>
+                <div class="col-8"><p class="L">Gender</p></div>
+                <div class="col-4"><p class="L">{listItem.gender}</p></div>
             </div>
             <div class="row">
-                <div class="col-8">Email</div>
-                <div class="col-4">{listItem.email}</div>
+                <div class="col-8"><p class="L">Email</p></div>
+                <div class="col-4"><p class="L">{listItem.email}</p></div>
             </div>
             <div class="row">
-                <div class="col-8">Has COVID?</div>
-                <div class="col-4">{listItem.has_covid ? "Yes" : "No"}</div>
+                <div class="col-8"><p class="L">Has COVID?</p></div>
+                <div class="col-4"><p class="L">{listItem.has_covid ? "Yes" : "No"}</p></div>
             </div>
             <div class="row">
-                <div class="col-8">Location</div>
-                <div class="col-4">{listItem.city},&nbsp;{listItem.state_province},&nbsp;{listItem.country}</div>
+                <div class="col-8"><p class="L">Location</p></div>
+                <div class="col-4"><p class="L">{listItem.city},&nbsp;{listItem.state_province},&nbsp;{listItem.country}</p></div>
             </div>
             <div class="row">
                 <div class="col-sm">

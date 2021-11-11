@@ -124,7 +124,8 @@ SELECT * FROM WorkStatus;
 SELECT * FROM People;
 SELECT * FROM PeopleWorkStatus;
 
--- For API Purposes
+-- For API Purposes: Join tables to be parsed into readable format by client
+
 INSERT INTO PeopleDetail
 SELECT 
 	pid,
@@ -168,6 +169,129 @@ FROM (
 GROUP BY pid;
 
 SELECT * FROM PeopleDetail; 
+
+-- Get Cases for each country, province, and city
+
+CREATE TABLE CountryCount (
+	country VARCHAR (255)										,
+    cases INT NOT NULL											
+);
+
+CREATE TABLE ProvinceCount (
+	province VARCHAR (255)										,
+    cases INT NOT NULL
+);
+
+CREATE TABLE CityCount (
+	city VARCHAR (255)											,
+    cases INT NOT NULL
+);
+
+INSERT INTO CountryCount
+SELECT 
+	country,
+    SUM(has_covid)
+FROM (
+	SELECT DISTINCT 
+		pid,
+		first_name,
+		last_name,
+        has_covid,
+		age,
+		gender,
+		email,
+		country, 
+		state_province, 
+		city
+	FROM (
+		(SELECT 
+			People.people_id pid,
+			first_name,
+			last_name,
+            People.status_id sid,
+			age,
+			gender,
+			email
+		FROM People
+		GROUP BY People.people_id) t
+			JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
+			JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
+			JOIN Location ON WorkStatus.location_id = Location.location_id
+            JOIN CovidStatus ON sid = CovidStatus.status_id
+)) T
+GROUP BY country;
+
+INSERT INTO ProvinceCount
+SELECT 
+	state_province,
+    SUM(has_covid)
+FROM (
+	SELECT DISTINCT 
+		pid,
+		first_name,
+		last_name,
+        has_covid,
+		age,
+		gender,
+		email,
+		country, 
+		state_province, 
+		city
+	FROM (
+		(SELECT 
+			People.people_id pid,
+			first_name,
+			last_name,
+            People.status_id sid,
+			age,
+			gender,
+			email
+		FROM People
+		GROUP BY People.people_id) t
+			JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
+			JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
+			JOIN Location ON WorkStatus.location_id = Location.location_id
+            JOIN CovidStatus ON sid = CovidStatus.status_id
+)) T
+GROUP BY state_province;
+
+INSERT INTO CityCount
+SELECT 
+	city,
+    SUM(has_covid)
+FROM (
+	SELECT DISTINCT 
+		pid,
+		first_name,
+		last_name,
+        has_covid,
+		age,
+		gender,
+		email,
+		country, 
+		state_province, 
+		city
+	FROM (
+		(SELECT 
+			People.people_id pid,
+			first_name,
+			last_name,
+            People.status_id sid,
+			age,
+			gender,
+			email
+		FROM People
+		GROUP BY People.people_id) t
+			JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
+			JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
+			JOIN Location ON WorkStatus.location_id = Location.location_id
+            JOIN CovidStatus ON sid = CovidStatus.status_id
+)) T
+GROUP BY city;
+
+SELECT * FROM CountryCount;
+SELECT * FROM ProvinceCount;
+SELECT * FROM CityCount;
 
 -- The two commands below represent the advanced SQL queris related to the project.
 

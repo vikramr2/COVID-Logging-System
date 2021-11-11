@@ -1,5 +1,27 @@
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+div :not(.not-sliding) {
+  animation: 1s ease-out 0s 1 slideInFromBottom;
+}
+
+.not-sliding {
+  background-color: #808080;
+}
+
 h2, p {
   text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+.L {
+  text-align: left;
   font-family: 'Courier New', monospace;
 }
 
@@ -15,4 +37,9 @@ h2, p {
 
 .entry-card {
   padding-top: 15px;
+}
+
+.horizontals {
+  display: flex;
+  justify-content: center;
 }

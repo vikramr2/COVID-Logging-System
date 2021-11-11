@@ -27,7 +27,7 @@ function SelectorBasic({ showDetail, setShowDetail, searchQuery, setSearchQuery,
     return (
         <div>
             <div class="search-section">
-                <p> Search Name </p>
+                <p><b>Search Name</b></p>
                 <input 
                     value={ searchQuery }
                     onInput={ e => setSearchQuery(e.target.value) }

@@ -19,7 +19,7 @@ function SelectorAdvanced({ showDetail, locQuery, setLocQuery, hasCovid, setHasC
     return  (
         <div>
             <div class="search-section">
-                <p> Search Location </p>
+                <p><b>Search Location</b></p>
                 <input 
                     value={ locQuery }
                     onInput={ e => setLocQuery(e.target.value) }

@@ -10,6 +10,8 @@ Using an R compiler. Run both `databases/generation/data_gen.R` and `databases/g
 ### Initializing the Database
 <strong>You must have mySQL and mySQL workbench installed !!!</strong> First, start a MySQL server by going to Apple Icon -> System Preferences. Open MySQL and start a server. Open MySQL workbench and run `databases/xSQLcode.sql` up until the basic table generation. 
   
+![Screenshot](/readme_images/Image\ 11-13-21\ at\ 1.01\ AM.pdf)
+
 Now, on the tables on the left panel. Right click each table and select <strong>Table Data Import Wizard</strong>. You should then be able to import each respective `.csv` file.
   
 Afer the data is imported, you can now run the following queries:

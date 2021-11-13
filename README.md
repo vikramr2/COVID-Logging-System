@@ -14,7 +14,7 @@ Using an R compiler. Run both `databases/generation/data_gen.R` and `databases/g
 
 Now, on the tables on the left panel. Right click each table and select <strong>Table Data Import Wizard</strong>. You should then be able to import each respective `.csv` file.
   
-Afer the data is imported, you can now run the following queries:
+Afer the data is imported, you can now run the following queries within the `xSQLcode.sql` file:
 ```sql
 INSERT INTO PeopleDetail
 SELECT 
@@ -184,3 +184,31 @@ GROUP BY city;
 ```
   
 ### Starting the API
+<strong>You must have Python3, Django, and MySQLClient Installed !!!</strong> If you dont have Python installed, just install it through Python's website. For Django and MySQLClient, open up a terminal and run
+  
+```
+python3 -mpip install django
+python3 -mpip install mysqlclient
+```
+  
+<strong>If you have them installed</strong>, open up a terminal in the main project directory and run
+  
+```
+cd api
+python3 manage.py runserver
+```
+  
+<strong>And now the server is running!</strong>
+  
+### Running the Client
+<strong>You must install npm to start !!!</strong> If you don't have npm, install it through nvm, which you can find more information on online.
+  
+Open up a terminal in the main project directory and run
+  
+```
+cd client
+npm install
+npm start
+```
+  
+The client is now running! To see the webpage, open up the browser of your choice and go to <strong>localhost:3000</strong>.

@@ -1,5 +1,8 @@
-# CS411_Project
+# COVID Logging System
 CS 411 [Data Base Systems Project]
+  
+## Description
+E F F I C I E N T, F R I C T I O N L E S S. This system allows you to add, change, see cases around you to get a better understanding of your likelihood of exposure to COVID.
 
 ## Running This Project
 Running this project involves several steps. One with the Database, API, then Client. 

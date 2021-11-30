@@ -1,0 +1,5 @@
+TODO:
+- Triggers to update Count tables on insert and delete
+- Vid Call with Ani to figure out what he's doing
+- Plotly.js graph as another feature
+- GCP

@@ -8,15 +8,16 @@ USE proj;
 -- Otherwise ignore.
 
 SET FOREIGN_KEY_CHECKS = FALSE;
-DROP  TABLE IF EXISTS `CovidStatus`  ;
-DROP  TABLE IF EXISTS `Location`	 ;
-DROP  TABLE IF EXISTS `People`	     ;
-DROP  TABLE IF EXISTS `WorkStatus`   ;
-DROP  TABLE IF EXISTS `Risk`		 ;
-DROP  TABLE IF EXISTS `PeopleDetail` ;
-DROP  TABLE IF EXISTS `CountryCount` ;
-DROP  TABLE IF EXISTS `CityCount`    ;
-DROP  TABLE IF EXISTS `ProvinceCount`;
+DROP  TABLE IF EXISTS `CovidStatus`     ;
+DROP  TABLE IF EXISTS `Location`	    ;
+DROP  TABLE IF EXISTS `People`	        ;
+DROP  TABLE IF EXISTS `WorkStatus`      ;
+DROP  TABLE IF EXISTS `Risk`		    ;
+DROP  TABLE IF EXISTS `PeopleDetail`    ;
+DROP  TABLE IF EXISTS `CountryCount`    ;
+DROP  TABLE IF EXISTS `CityCount`       ;
+DROP  TABLE IF EXISTS `ProvinceCount`   ;
+DROP  TABLE IF EXISTS `PeopleWorkStatus`;
 SET FOREIGN_KEY_CHECKS = TRUE;
 FLUSH TABLES 		  `CovidStatus`, `Location`, `People`, `WorkStatus`, `Risk`;
 
@@ -117,7 +118,7 @@ REFERENCES 			CovidStatus (status_id);
 
 SHOW TABLES;	-- CHECK TO SEE IF CORRECT NUMBER OF TABLES HAVE BEEN CREATED!
 
--- After importing the data into the respective tables use the code below to look at the data.
+-- After impoPeopleWorkStatusrting the data into the respective tables use the code below to look at the data.
 -- Make sure everything adds up.
 
 SELECT * FROM Location;
@@ -299,263 +300,66 @@ SELECT * FROM CityCount;
 
 DELIMITER $$
 
+DROP TRIGGER UpdateCounts$$
 CREATE TRIGGER UpdateCounts
 AFTER INSERT
 ON PeopleDetail
 FOR EACH ROW
 BEGIN
-	DROP  TABLE IF EXISTS `CountryCount` ;
-	DROP  TABLE IF EXISTS `CityCount`    ;
-	DROP  TABLE IF EXISTS `ProvinceCount`;
-    
-    CREATE TABLE CountryCount (
-		country VARCHAR (255)										,
-		cases INT NOT NULL											
-	);
-
-	CREATE TABLE ProvinceCount (
-		province VARCHAR (255)										,
-		cases INT NOT NULL
-	);
-
-	CREATE TABLE CityCount (
-		city VARCHAR (255)											,
-		cases INT NOT NULL
-	);
-
-	INSERT INTO CountryCount
-	SELECT 
-		country,
-		SUM(has_covid)
-	FROM (
-		SELECT DISTINCT 
-			pid,
-			first_name,
-			last_name,
-			has_covid,
-			age,
-			gender,
-			email,
-			country, 
-			state_province, 
-			city
-		FROM (
-			(SELECT 
-				People.people_id pid,
-				first_name,
-				last_name,
-				People.status_id sid,
-				age,
-				gender,
-				email
-			FROM People
-			GROUP BY People.people_id) t
-				JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
-				JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
-				JOIN Location ON WorkStatus.location_id = Location.location_id
-				JOIN CovidStatus ON sid = CovidStatus.status_id
-	)) T
-	GROUP BY country;
-
-	INSERT INTO ProvinceCount
-	SELECT 
-		state_province,
-		SUM(has_covid)
-	FROM (
-		SELECT DISTINCT 
-			pid,
-			first_name,
-			last_name,
-			has_covid,
-			age,
-			gender,
-			email,
-			country, 
-			state_province, 
-			city
-		FROM (
-			(SELECT 
-				People.people_id pid,
-				first_name,
-				last_name,
-				People.status_id sid,
-				age,
-				gender,
-				email
-			FROM People
-			GROUP BY People.people_id) t
-				JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
-				JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
-				JOIN Location ON WorkStatus.location_id = Location.location_id
-				JOIN CovidStatus ON sid = CovidStatus.status_id
-	)) T
-	GROUP BY state_province;
-
-	INSERT INTO CityCount
-	SELECT 
-		city,
-		SUM(has_covid)
-	FROM (
-		SELECT DISTINCT 
-			pid,
-			first_name,
-			last_name,
-			has_covid,
-			age,
-			gender,
-			email,
-			country, 
-			state_province, 
-			city
-		FROM (
-			(SELECT 
-				People.people_id pid,
-				first_name,
-				last_name,
-				People.status_id sid,
-				age,
-				gender,
-				email
-			FROM People
-			GROUP BY People.people_id) t
-				JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
-				JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
-				JOIN Location ON WorkStatus.location_id = Location.location_id
-				JOIN CovidStatus ON sid = CovidStatus.status_id
-	)) T
-	GROUP BY city;
+	IF NEW.country != 'NorthKorea' THEN
+		UPDATE CountryCount
+		SET cases = cases + 1
+		WHERE country = 'UnitedStates';
+    END IF;
 END $$
 DELIMITER ;
 
+DROP TABLE PeopleDetail2;
+
+CREATE TABLE PeopleDetail2 (
+	people_id INT NOT NULL AUTO_INCREMENT   					,
+    first_name VARCHAR (31)										,
+	last_name VARCHAR (31)										,
+    has_covid BOOLEAN											,
+	age INT NOT NULL											,
+	gender VARCHAR (255)                    					,
+	email VARCHAR (255)											,
+    country VARCHAR (255)										,
+	state_province VARCHAR(255)									,
+	city VARCHAR(255)											,
+    PRIMARY KEY (people_id)
+);
 DELIMITER $$
 
+DROP TRIGGER UpdateCounts2$$
 CREATE TRIGGER UpdateCounts2
 AFTER DELETE
 ON PeopleDetail
 FOR EACH ROW
 BEGIN
-	DROP  TABLE IF EXISTS `CountryCount` ;
-	DROP  TABLE IF EXISTS `CityCount`    ;
-	DROP  TABLE IF EXISTS `ProvinceCount`;
-    
-    CREATE TABLE CountryCount (
-		country VARCHAR (255)										,
-		cases INT NOT NULL											
-	);
-
-	CREATE TABLE ProvinceCount (
-		province VARCHAR (255)										,
-		cases INT NOT NULL
-	);
-
-	CREATE TABLE CityCount (
-		city VARCHAR (255)											,
-		cases INT NOT NULL
-	);
-
-	INSERT INTO CountryCount
-	SELECT 
-		country,
-		SUM(has_covid)
-	FROM (
-		SELECT DISTINCT 
-			pid,
-			first_name,
-			last_name,
-			has_covid,
-			age,
-			gender,
-			email,
-			country, 
-			state_province, 
-			city
-		FROM (
-			(SELECT 
-				People.people_id pid,
-				first_name,
-				last_name,
-				People.status_id sid,
-				age,
-				gender,
-				email
-			FROM People
-			GROUP BY People.people_id) t
-				JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
-				JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
-				JOIN Location ON WorkStatus.location_id = Location.location_id
-				JOIN CovidStatus ON sid = CovidStatus.status_id
-	)) T
-	GROUP BY country;
-
-	INSERT INTO ProvinceCount
-	SELECT 
-		state_province,
-		SUM(has_covid)
-	FROM (
-		SELECT DISTINCT 
-			pid,
-			first_name,
-			last_name,
-			has_covid,
-			age,
-			gender,
-			email,
-			country, 
-			state_province, 
-			city
-		FROM (
-			(SELECT 
-				People.people_id pid,
-				first_name,
-				last_name,
-				People.status_id sid,
-				age,
-				gender,
-				email
-			FROM People
-			GROUP BY People.people_id) t
-				JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
-				JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
-				JOIN Location ON WorkStatus.location_id = Location.location_id
-				JOIN CovidStatus ON sid = CovidStatus.status_id
-	)) T
-	GROUP BY state_province;
-
-	INSERT INTO CityCount
-	SELECT 
-		city,
-		SUM(has_covid)
-	FROM (
-		SELECT DISTINCT 
-			pid,
-			first_name,
-			last_name,
-			has_covid,
-			age,
-			gender,
-			email,
-			country, 
-			state_province, 
-			city
-		FROM (
-			(SELECT 
-				People.people_id pid,
-				first_name,
-				last_name,
-				People.status_id sid,
-				age,
-				gender,
-				email
-			FROM People
-			GROUP BY People.people_id) t
-				JOIN PeopleWorkStatus ON PeopleWorkStatus.people_id = pid 
-				JOIN WorkStatus ON WorkStatus.work_id = PeopleWorkStatus.work_id 
-				JOIN Location ON WorkStatus.location_id = Location.location_id
-				JOIN CovidStatus ON sid = CovidStatus.status_id
-	)) T
-	GROUP BY city;
+	UPDATE CountryCount
+    SET cases = cases - 1
+    WHERE country = 'Ukraine';
 END $$
 DELIMITER ;
+
+SELECT * FROM PeopleDetail2;
+
+DELIMITER $$
+DELIMITER ;
+CREATE TEMPORARY TABLE people_filtered
+SELECT * FROM People NATURAL JOIN Risk
+WHERE  age > 18 AND UPPER(gender) = UPPER("male")
+UNION
+SELECT * FROM People NATURAL JOIN Risk
+WHERE age > 18 AND UPPER(gender) = UPPER("female")
+UNION 
+SELECT * FROM People NATURAL JOIN Risk
+WHERE age > 18 AND UPPER(gender) = UPPER("non-binary");
+
+CREATE TEMPORARY TABLE risk_filtered
+SELECT people_id, risk_id, risk_level
+FROM   (SELECT people_id, risk_id, gender FROM People WHERE age > 18) AS s Natural Join Risk;
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS PeopleRisk $$

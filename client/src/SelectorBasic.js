@@ -38,9 +38,6 @@ function SelectorBasic({ showDetail, setShowDetail, searchQuery, setSearchQuery,
                 />
             </div>
             <div class="basic-wrapper">
-                <input class="basic" type="button" onClick={switchMode} value={message}/>
-            </div>
-            <div class="basic-wrapper">
                 <input class="basic" type="button" onClick={openWindow} value={menu}/>
             </div>
         </div>

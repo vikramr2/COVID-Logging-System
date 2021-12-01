@@ -43,6 +43,13 @@ function Entry({ listItem, detailed, people, setPeople, details, setDetails }) {
         birthday();
     }
 
+    const alertRisk = e => {
+        let msgs = ["Quarantine for 14 days, please!", "Practice social distancing!", "Lick door knobs!"];
+        let randomIndex = Math.floor(Math.random() * 3);
+
+        alert(msgs[randomIndex]);
+    }
+
     // If not detailed. only render name, age, gender, and email
     if (!detailed) {
         return (
@@ -63,6 +70,9 @@ function Entry({ listItem, detailed, people, setPeople, details, setDetails }) {
                 <div class="row">
                     <div class="col-sm">
                         <input class="basic" type="button" value="Delete this entry" onClick={deleteEntry}/>
+                    </div>
+                    <div class="col-sm">
+                        <input class="basic" type="button" value="Whats My Risk?" onClick={alertRisk}/>
                     </div>
                     <div class="col-sm">
                         <input class="basic" type="button" value={"It's " + listItem.first_name + "'s Birthday"} onClick={increment}/>
@@ -99,6 +109,9 @@ function Entry({ listItem, detailed, people, setPeople, details, setDetails }) {
             <div class="row">
                 <div class="col-sm">
                     <input class="basic" type="button" value="Delete this entry" onClick={deleteEntry}/>
+                </div>
+                <div class="col-sm">
+                    <input class="basic" type="button" value="Whats My Risk?" onClick={alertRisk}/>
                 </div>
                 <div class="col-sm">
                     <input class="basic" type="button" value={"It's " + listItem.first_name + "'s Birthday"} onClick={increment}/>

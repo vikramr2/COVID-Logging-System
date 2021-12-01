@@ -170,6 +170,9 @@ function App() {
               <li class="nav-item">
                 <Link class="nav-link" to="/world"><p class="L">World</p></Link>
               </li>
+              <li class="nav-item">
+                <Link class="nav-link" to="/graphs"><p class="L">Graphs</p></Link>
+              </li>
             </ul>
           </div>
         </nav>

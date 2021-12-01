@@ -30,8 +30,6 @@ function CreateWindow({ window, people, setPeople, id, setId, fname, setFname, l
     return (
         <div>
             <p><b>Add Person</b></p>
-            <p>ID:</p>
-            <input type="text" id="id" name="id" value={id} onChange={e => setId(parseInt(e.target.value))}/><br/>
             <p>First Name:</p>
             <input type="text" id="fname" name="fname" value={fname} onChange={e => setFname(e.target.value)}/><br/>
             <p>Last Name:</p>

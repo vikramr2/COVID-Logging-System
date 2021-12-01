@@ -1,0 +1,794 @@
+[
+    {
+        "location": "Afghanistan",
+        "total_cases": "157260.0"
+    },
+    {
+        "location": "Albania",
+        "total_cases": "199750.0"
+    },
+    {
+        "location": "Algeria",
+        "total_cases": "210344.0"
+    },
+    {
+        "location": "Andorra",
+        "total_cases": "16712.0"
+    },
+    {
+        "location": "Angola",
+        "total_cases": "65155.0"
+    },
+    {
+        "location": "Anguilla",
+        "total_cases": ""
+    },
+    {
+        "location": "Antigua and Barbuda",
+        "total_cases": "4141.0"
+    },
+    {
+        "location": "Argentina",
+        "total_cases": "5328416.0"
+    },
+    {
+        "location": "Armenia",
+        "total_cases": "338120.0"
+    },
+    {
+        "location": "Aruba",
+        "total_cases": ""
+    },
+    {
+        "location": "Australia",
+        "total_cases": "210238.0"
+    },
+    {
+        "location": "Austria",
+        "total_cases": "1151809.0"
+    },
+    {
+        "location": "Azerbaijan",
+        "total_cases": "586640.0"
+    },
+    {
+        "location": "Bahamas",
+        "total_cases": "22763.0"
+    },
+    {
+        "location": "Bahrain",
+        "total_cases": "277628.0"
+    },
+    {
+        "location": "Bangladesh",
+        "total_cases": "1576011.0"
+    },
+    {
+        "location": "Barbados",
+        "total_cases": "25152.0"
+    },
+    {
+        "location": "Belarus",
+        "total_cases": "653323.0"
+    },
+    {
+        "location": "Belgium",
+        "total_cases": "1749469.0"
+    },
+    {
+        "location": "Belize",
+        "total_cases": "30338.0"
+    },
+    {
+        "location": "Benin",
+        "total_cases": "24850.0"
+    },
+    {
+        "location": "Bhutan",
+        "total_cases": "2640.0"
+    },
+    {
+        "location": "Bolivia",
+        "total_cases": "536472.0"
+    },
+    {
+        "location": "Bosnia and Herzegovina",
+        "total_cases": "274219.0"
+    },
+    {
+        "location": "Botswana",
+        "total_cases": "195068.0"
+    },
+    {
+        "location": "Brazil",
+        "total_cases": "22084749.0"
+    },
+    {
+        "location": "British Virgin Islands",
+        "total_cases": ""
+    },
+    {
+        "location": "Brunei",
+        "total_cases": "15058.0"
+    },
+    {
+        "location": "Bulgaria",
+        "total_cases": "692376.0"
+    },
+    {
+        "location": "Burkina Faso",
+        "total_cases": "15711.0"
+    },
+    {
+        "location": "Burundi",
+        "total_cases": "20415.0"
+    },
+    {
+        "location": "Cambodia",
+        "total_cases": "120112.0"
+    },
+    {
+        "location": "Cameroon",
+        "total_cases": "106794.0"
+    },
+    {
+        "location": "Canada",
+        "total_cases": "1798515.0"
+    },
+    {
+        "location": "Cape Verde",
+        "total_cases": "38367.0"
+    },
+    {
+        "location": "Cayman Islands",
+        "total_cases": ""
+    },
+    {
+        "location": "Central African Republic",
+        "total_cases": "11708.0"
+    },
+    {
+        "location": "Chad",
+        "total_cases": "5107.0"
+    },
+    {
+        "location": "Chile",
+        "total_cases": "1761365.0"
+    },
+    {
+        "location": "China",
+        "total_cases": "98788.0"
+    },
+    {
+        "location": "Colombia",
+        "total_cases": "5067348.0"
+    },
+    {
+        "location": "Comoros",
+        "total_cases": "4498.0"
+    },
+    {
+        "location": "Congo",
+        "total_cases": "18905.0"
+    },
+    {
+        "location": "Costa Rica",
+        "total_cases": "566560.0"
+    },
+    {
+        "location": "Cote d'Ivoire",
+        "total_cases": "61712.0"
+    },
+    {
+        "location": "Croatia",
+        "total_cases": "604347.0"
+    },
+    {
+        "location": "Cuba",
+        "total_cases": "962350.0"
+    },
+    {
+        "location": "Cyprus",
+        "total_cases": "133860.0"
+    },
+    {
+        "location": "Czechia",
+        "total_cases": "2132380.0"
+    },
+    {
+        "location": "Democratic Republic of Congo",
+        "total_cases": "58234.0"
+    },
+    {
+        "location": "Denmark",
+        "total_cases": "488262.0"
+    },
+    {
+        "location": "Djibouti",
+        "total_cases": "13504.0"
+    },
+    {
+        "location": "Dominica",
+        "total_cases": "5955.0"
+    },
+    {
+        "location": "Dominican Republic",
+        "total_cases": "407113.0"
+    },
+    {
+        "location": "Ecuador",
+        "total_cases": "526615.0"
+    },
+    {
+        "location": "Egypt",
+        "total_cases": "357629.0"
+    },
+    {
+        "location": "El Salvador",
+        "total_cases": "119803.0"
+    },
+    {
+        "location": "Equatorial Guinea",
+        "total_cases": "13579.0"
+    },
+    {
+        "location": "Eritrea",
+        "total_cases": "7341.0"
+    },
+    {
+        "location": "Estonia",
+        "total_cases": "221860.0"
+    },
+    {
+        "location": "Eswatini",
+        "total_cases": "46582.0"
+    },
+    {
+        "location": "Ethiopia",
+        "total_cases": "371346.0"
+    },
+    {
+        "location": "Fiji",
+        "total_cases": "52506.0"
+    },
+    {
+        "location": "Finland",
+        "total_cases": "185622.0"
+    },
+    {
+        "location": "France",
+        "total_cases": "7731351.0"
+    },
+    {
+        "location": "Gabon",
+        "total_cases": "37342.0"
+    },
+    {
+        "location": "Gambia",
+        "total_cases": "9989.0"
+    },
+    {
+        "location": "Georgia",
+        "total_cases": "840593.0"
+    },
+    {
+        "location": "Germany",
+        "total_cases": "5854884.0"
+    },
+    {
+        "location": "Ghana",
+        "total_cases": "130920.0"
+    },
+    {
+        "location": "Greece",
+        "total_cases": "931183.0"
+    },
+    {
+        "location": "Grenada",
+        "total_cases": "5888.0"
+    },
+    {
+        "location": "Guatemala",
+        "total_cases": "617621.0"
+    },
+    {
+        "location": "Guinea",
+        "total_cases": "30770.0"
+    },
+    {
+        "location": "Guinea-Bissau",
+        "total_cases": "6440.0"
+    },
+    {
+        "location": "Guyana",
+        "total_cases": "37825.0"
+    },
+    {
+        "location": "Haiti",
+        "total_cases": "25175.0"
+    },
+    {
+        "location": "Honduras",
+        "total_cases": "377859.0"
+    },
+    {
+        "location": "Hong Kong",
+        "total_cases": "12430.0"
+    },
+    {
+        "location": "Hungary",
+        "total_cases": "1096718.0"
+    },
+    {
+        "location": "Iceland",
+        "total_cases": "17770.0"
+    },
+    {
+        "location": "India",
+        "total_cases": "34587822.0"
+    },
+    {
+        "location": "Indonesia",
+        "total_cases": "4256112.0"
+    },
+    {
+        "location": "Iran",
+        "total_cases": "6113192.0"
+    },
+    {
+        "location": "Iraq",
+        "total_cases": "2080448.0"
+    },
+    {
+        "location": "Ireland",
+        "total_cases": "564657.0"
+    },
+    {
+        "location": "Israel",
+        "total_cases": "1342976.0"
+    },
+    {
+        "location": "Italy",
+        "total_cases": "5015790.0"
+    },
+    {
+        "location": "Jamaica",
+        "total_cases": "91222.0"
+    },
+    {
+        "location": "Japan",
+        "total_cases": "1726555.0"
+    },
+    {
+        "location": "Jordan",
+        "total_cases": "948966.0"
+    },
+    {
+        "location": "Kazakhstan",
+        "total_cases": "1054091.0"
+    },
+    {
+        "location": "Kenya",
+        "total_cases": "254979.0"
+    },
+    {
+        "location": "Kiribati",
+        "total_cases": "2.0"
+    },
+    {
+        "location": "Kosovo",
+        "total_cases": "161083.0"
+    },
+    {
+        "location": "Kuwait",
+        "total_cases": "413327.0"
+    },
+    {
+        "location": "Kyrgyzstan",
+        "total_cases": "183285.0"
+    },
+    {
+        "location": "Laos",
+        "total_cases": "72447.0"
+    },
+    {
+        "location": "Latvia",
+        "total_cases": "252728.0"
+    },
+    {
+        "location": "Lebanon",
+        "total_cases": "668605.0"
+    },
+    {
+        "location": "Lesotho",
+        "total_cases": "21768.0"
+    },
+    {
+        "location": "Liberia",
+        "total_cases": "5823.0"
+    },
+    {
+        "location": "Libya",
+        "total_cases": "372209.0"
+    },
+    {
+        "location": "Liechtenstein",
+        "total_cases": "4562.0"
+    },
+    {
+        "location": "Lithuania",
+        "total_cases": "468494.0"
+    },
+    {
+        "location": "Luxembourg",
+        "total_cases": "89010.0"
+    },
+    {
+        "location": "Madagascar",
+        "total_cases": "44330.0"
+    },
+    {
+        "location": "Malawi",
+        "total_cases": "61901.0"
+    },
+    {
+        "location": "Malaysia",
+        "total_cases": "2627903.0"
+    },
+    {
+        "location": "Maldives",
+        "total_cases": "91543.0"
+    },
+    {
+        "location": "Mali",
+        "total_cases": "17364.0"
+    },
+    {
+        "location": "Malta",
+        "total_cases": "39329.0"
+    },
+    {
+        "location": "Marshall Islands",
+        "total_cases": "4.0"
+    },
+    {
+        "location": "Mauritania",
+        "total_cases": "39213.0"
+    },
+    {
+        "location": "Mauritius",
+        "total_cases": "21040.0"
+    },
+    {
+        "location": "Mexico",
+        "total_cases": "3884566.0"
+    },
+    {
+        "location": "Moldova",
+        "total_cases": "363110.0"
+    },
+    {
+        "location": "Monaco",
+        "total_cases": "3738.0"
+    },
+    {
+        "location": "Mongolia",
+        "total_cases": "381528.0"
+    },
+    {
+        "location": "Montenegro",
+        "total_cases": "157085.0"
+    },
+    {
+        "location": "Morocco",
+        "total_cases": "949785.0"
+    },
+    {
+        "location": "Mozambique",
+        "total_cases": "151528.0"
+    },
+    {
+        "location": "Myanmar",
+        "total_cases": "521931.0"
+    },
+    {
+        "location": "Namibia",
+        "total_cases": "129180.0"
+    },
+    {
+        "location": "Nepal",
+        "total_cases": "821121.0"
+    },
+    {
+        "location": "Netherlands",
+        "total_cases": "2662247.0"
+    },
+    {
+        "location": "New Zealand",
+        "total_cases": "11577.0"
+    },
+    {
+        "location": "Nicaragua",
+        "total_cases": "17152.0"
+    },
+    {
+        "location": "Niger",
+        "total_cases": "6989.0"
+    },
+    {
+        "location": "Nigeria",
+        "total_cases": "214113.0"
+    },
+    {
+        "location": "North Macedonia",
+        "total_cases": "215125.0"
+    },
+    {
+        "location": "Norway",
+        "total_cases": "263798.0"
+    },
+    {
+        "location": "Oceania",
+        "total_cases": "309456.0"
+    },
+    {
+        "location": "Oman",
+        "total_cases": "304519.0"
+    },
+    {
+        "location": "Pakistan",
+        "total_cases": "1284840.0"
+    },
+    {
+        "location": "Palau",
+        "total_cases": "8.0"
+    },
+    {
+        "location": "Palestine",
+        "total_cases": "460053.0"
+    },
+    {
+        "location": "Panama",
+        "total_cases": "477514.0"
+    },
+    {
+        "location": "Papua New Guinea",
+        "total_cases": "35090.0"
+    },
+    {
+        "location": "Paraguay",
+        "total_cases": "463001.0"
+    },
+    {
+        "location": "Peru",
+        "total_cases": "2234970.0"
+    },
+    {
+        "location": "Philippines",
+        "total_cases": "2832375.0"
+    },
+    {
+        "location": "Poland",
+        "total_cases": "3520961.0"
+    },
+    {
+        "location": "Portugal",
+        "total_cases": "1144342.0"
+    },
+    {
+        "location": "Qatar",
+        "total_cases": "243290.0"
+    },
+    {
+        "location": "Romania",
+        "total_cases": "1778045.0"
+    },
+    {
+        "location": "Russia",
+        "total_cases": "9436650.0"
+    },
+    {
+        "location": "Rwanda",
+        "total_cases": "100344.0"
+    },
+    {
+        "location": "Saint Kitts and Nevis",
+        "total_cases": "2782.0"
+    },
+    {
+        "location": "Saint Lucia",
+        "total_cases": "12989.0"
+    },
+    {
+        "location": "Saint Vincent and the Grenadines",
+        "total_cases": "5525.0"
+    },
+    {
+        "location": "Samoa",
+        "total_cases": "3.0"
+    },
+    {
+        "location": "San Marino",
+        "total_cases": "5979.0"
+    },
+    {
+        "location": "Sao Tome and Principe",
+        "total_cases": "3731.0"
+    },
+    {
+        "location": "Saudi Arabia",
+        "total_cases": "549720.0"
+    },
+    {
+        "location": "Senegal",
+        "total_cases": "73987.0"
+    },
+    {
+        "location": "Serbia",
+        "total_cases": "1252573.0"
+    },
+    {
+        "location": "Seychelles",
+        "total_cases": "23390.0"
+    },
+    {
+        "location": "Sierra Leone",
+        "total_cases": "6402.0"
+    },
+    {
+        "location": "Singapore",
+        "total_cases": "263486.0"
+    },
+    {
+        "location": "Slovakia",
+        "total_cases": "1159767.0"
+    },
+    {
+        "location": "Slovenia",
+        "total_cases": "418413.0"
+    },
+    {
+        "location": "Solomon Islands",
+        "total_cases": "20.0"
+    },
+    {
+        "location": "Somalia",
+        "total_cases": "23016.0"
+    },
+    {
+        "location": "South Africa",
+        "total_cases": "2963679.0"
+    },
+    {
+        "location": "South Korea",
+        "total_cases": "447230.0"
+    },
+    {
+        "location": "South Sudan",
+        "total_cases": "12755.0"
+    },
+    {
+        "location": "Spain",
+        "total_cases": "5153923.0"
+    },
+    {
+        "location": "Sri Lanka",
+        "total_cases": "563267.0"
+    },
+    {
+        "location": "Sudan",
+        "total_cases": "42826.0"
+    },
+    {
+        "location": "Suriname",
+        "total_cases": "50823.0"
+    },
+    {
+        "location": "Sweden",
+        "total_cases": "1198848.0"
+    },
+    {
+        "location": "Switzerland",
+        "total_cases": "1006239.0"
+    },
+    {
+        "location": "Syria",
+        "total_cases": "48068.0"
+    },
+    {
+        "location": "Taiwan",
+        "total_cases": "16596.0"
+    },
+    {
+        "location": "Tajikistan",
+        "total_cases": "17493.0"
+    },
+    {
+        "location": "Tanzania",
+        "total_cases": "26261.0"
+    },
+    {
+        "location": "Thailand",
+        "total_cases": "2111566.0"
+    },
+    {
+        "location": "Timor",
+        "total_cases": "19822.0"
+    },
+    {
+        "location": "Togo",
+        "total_cases": "26250.0"
+    },
+    {
+        "location": "Tonga",
+        "total_cases": "1.0"
+    },
+    {
+        "location": "Trinidad and Tobago",
+        "total_cases": "70598.0"
+    },
+    {
+        "location": "Tunisia",
+        "total_cases": "717309.0"
+    },
+    {
+        "location": "Turkey",
+        "total_cases": "8772342.0"
+    },
+    {
+        "location": "Uganda",
+        "total_cases": "127523.0"
+    },
+    {
+        "location": "Ukraine",
+        "total_cases": "3595410.0"
+    },
+    {
+        "location": "United Arab Emirates",
+        "total_cases": "741976.0"
+    },
+    {
+        "location": "United Kingdom",
+        "total_cases": "10245244.0"
+    },
+    {
+        "location": "United States",
+        "total_cases": "48438302.0"
+    },
+    {
+        "location": "Uruguay",
+        "total_cases": "399504.0"
+    },
+    {
+        "location": "Uzbekistan",
+        "total_cases": "193065.0"
+    },
+    {
+        "location": "Vanuatu",
+        "total_cases": "6.0"
+    },
+    {
+        "location": "Vatican",
+        "total_cases": "27.0"
+    },
+    {
+        "location": "Venezuela",
+        "total_cases": "431296.0"
+    },
+    {
+        "location": "Vietnam",
+        "total_cases": "1224110.0"
+    },
+    {
+        "location": "Yemen",
+        "total_cases": "9995.0"
+    },
+    {
+        "location": "Zambia",
+        "total_cases": "210150.0"
+    },
+    {
+        "location": "Zimbabwe",
+        "total_cases": "134226.0"
+    }
+]

@@ -9,6 +9,7 @@ import CreateWindow from './CreateWindow';
 import Entry from './Entry';
 import SelectorAdvanced from './SelectorAdvanced';
 import SelectorBasic from './SelectorBasic';
+import Graph from './Graph';
 
 /** Filter names of people based on the search query
  * 
@@ -231,6 +232,9 @@ function App() {
                 context={context}
               />
             ))}
+          </Route>
+          <Route path="/graphs">
+            <Graph/>
           </Route>
         </Switch>
       </div>

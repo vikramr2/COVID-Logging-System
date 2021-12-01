@@ -28,7 +28,7 @@ function CreateWindow({ window, people, setPeople, id, setId, fname, setFname, l
     }
 
     return (
-        <div>
+        <div class="create-window">
             <p><b>Add Person</b></p>
             <p>First Name:</p>
             <input type="text" id="fname" name="fname" value={fname} onChange={e => setFname(e.target.value)}/><br/>
